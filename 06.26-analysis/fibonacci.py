@@ -2,24 +2,14 @@ import sys
 
 
 def fibonacci(n):
-    # current = previous = None
-    #
-    # for i in range(n + 1):
-    #     if i == 0:
-    #         current = 0
-    #     elif i == 1:
-    #         previous = current
-    #         current = 1
-    #     else:
-    #         temp = previous
-    #         previous = current
-    #         current = current + temp
-    #
-    # return current
-
+    # NOTE: To compute, for example, f_5, we have to know f_4 and f_3. To
+    #       compute f_4, we then have to know f_3 and f_2 -- this means we end
+    #       up naively having to compute f_3 *twice*. Doing work recursively is
+    #       fine; doing the same work multiple times is not.
     if n == 0:
-        return 0
+        return None, 0
     elif n == 1:
-        return 1
+        return 0, 1
     else:
-        return fibonacci(n - 1) + fibonacci(n - 2)
+        previous, current = fibonacci(n - 1)
+        return current, current + previous 
