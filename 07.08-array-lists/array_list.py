@@ -29,16 +29,17 @@ def add(lst, idx, value):
     #       create a new array and copy the elements over. Since this is slow,
     #       we'll double the capacity to avoid extra copies in the future.
     #
-    # Set the lst's capacity to the lst's capacity * 2.
-    # Create a new array of the lst's capacity.
+    # If the lst's size is equal to the lst's capacity, then:
+    #     Set the lst's capacity to the lst's capacity * 2.
+    #     Create a new array of the lst's capacity.
     #
-    # NOTE: Some additions will require an additional O(n) capacity increase,
-    #       but most additions, amortized over the lifetime of the list, will
-    #       find that there is already enough space in the array.
+    #     NOTE: Some additions will require an additional O(n) capacity
+    #           increase, but most additions, amortized over the lifetime of
+    #           the list, will find that there is already enough space.
     #
-    # For i from 0 to the lst's size, do:
-    #     Set the new array at i to the lst's array at i.
-    # Set the lst's array to the new array.
+    #     For i from 0 to the lst's size, do:
+    #         Set the new array at i to the lst's array at i.
+    #     Set the lst's array to the new array.
     #
     # NOTE: In order to support fast random access, the list indices must be
     #       equivalent to the corresponding array indices, so adding an element
