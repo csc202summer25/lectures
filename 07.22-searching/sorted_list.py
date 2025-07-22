@@ -33,12 +33,11 @@ def insert(lst, value):
     #       linear seach at the same time.
     #
     # Start with i being the lst's size.
-    # While i is greater than 0 and
-    #  the lst's array at i is greater than the given value, do:
-    #     Set the lst's array at i to the lst's array at i - 1.
+    # While the array at i - 1 is in-bounds, greater than the given value, do:
+    #     Set the array at i to the array at i - 1.
     #     Decrement i.
     #
-    # Set the lst's array at i to the given value.
+    # Set the array at i to the given value.
     # Increment the size.
     pass
 
@@ -50,7 +49,7 @@ def remove(lst, idx):
     #       ruin it by taking things out.
     #
     # For i from the given idx to the lst's size - 1, do:
-    #     Set the lst's array at i to the lst's array at i + 1.
+    #     Set the array at i to the array at i + 1.
     #
     # Decrement the size.
     pass
@@ -66,9 +65,9 @@ def find(lst, value):
     #
     # While low is less than or equal to high, do:
     #     Set mid to the floor of (low + high) / 2.
-    #     If the lst at mid is equal to the given value, then:
+    #     If the array at mid is equal to the given value, then:
     #         Return mid.
-    #     Else if the lst at mid is less than the given value, then:
+    #     Else if the array at mid is less than the given value, then:
     #         Set low to mid + 1.
     #     Else, do:
     #         Set high to mid - 1.
