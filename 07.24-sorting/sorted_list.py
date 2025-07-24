@@ -53,13 +53,51 @@ def find(lst, value):
 
 
 def create(array, size):
-    # NOTE: In the worst case, each of the n insertions takes O(n) time; this
-    #       is thus O(n^2). This is not the best possible way to sort a list,
-    #       but it is practically trivial to implement given the above insert
-    #       function.
+    # NOTE: The following is a merge sort. There are many, many other ways to
+    #       sort, but in the worst case scenario, a merge sort is provably the
+    #       best. The number of times we can halve a list is logarithmic, and
+    #       merging sorted lists is linear, so this is O(n log n).
     #
-    # Create a new sorted list.
-    # For i from 0 to the given size, do:
-    #     Insert the given array at the given size into the sorted list.
-    # Return the sorted list.
+    # Sort the given array.
+    # Return a new sorted list whose array is the sorted array.
     pass
+
+
+def _sort(array, size):
+    # NOTE: To make the given array smaller, so as to obtain the trivially
+    #       sorted sub-arrays of length 1, we will first divide the given array
+    #       in half -- this produces a smaller version of the same problem,
+    #       which can then be solved recursively.
+    #
+    # If the given size is less than or equal to 1, then:
+    #     Return the given array.
+    # Else, do:
+    #     (create a new array_a containing the elements in the first half)
+    #     (create a new array_b containing the elements in the second half)
+    #     (recursively sort array_a and array_b)
+    #     Return the result of merging the recursively sorted arrays.
+
+
+def _merge(array_a, n, array_b, m):
+    # Create a new array of capacity n + m.
+    # Start with i, j, and k all being 0.
+    #
+    # While i is less than n or j is less than m, do:
+    #     If i is greater than or equal to n, then:
+    #         Set the new array at k to array_b at j.
+    #         Increment j and k.
+    #     Else if j is greater than or equal to m, then:
+    #         Set the new array at k to array_a at i.
+    #         Increment i and k.
+    #     Else if array_a at i is less than array_b at j, then:
+    #         Set the new array at k to array_a at i.
+    #         Increment i and k.
+    #     Else, do:
+    #         Set the new array at k to array_b at j.
+    #         Increment j and k.
+    #
+    # NOTE: To break out of the loop, both i and j must be out-of-bounds,
+    #       meaning that we have reached the ends of both arrays, meaning that
+    #       all of their collective elements have been merged.
+    #
+    # Return the new array
