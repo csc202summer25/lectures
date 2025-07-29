@@ -48,12 +48,74 @@ def combine(value, left, right):
 
 
 def postorder(tree):
+    # NOTE: Since trees are defined recursively, they can be traversed by
+    #       recursive functions. However, BinaryTrees are not recursive -- they
+    #       do not contain other BinaryTrees -- rather, Nodes are recursive.
+    #       Every Node contains 0, 1, or 2 other Nodes.
+    #
+    # Traverse the given tree's root.
+    pass
+
+
+def _traverse(node):
+    # If the given node is None, then:
+    #     (there is no node to traverse -- perform whatever default action
+    #      ought to be performed on empty trees, e.g., do nothing)
+    # Else, do:
+    #     Recurse on the given node's left.
+    #     Recurse on the given node's right.
+    #     (traverse the given node -- perform whatever action ought to be
+    #      performed on a traversed node, e.g., add it to a queue)
     pass
 
 
 def preorder(tree):
+    # NOTE: A pre-order traversal could certainly be done recursively, but any
+    #       recursive function can be made iterative by maintaining a "stack of
+    #       jobs": just like stacks, function calls are LIFO. The first to be
+    #       called is last to return; the last to be called is first to return.
+    #
+    # Start with an empty stack.
+    # If the given tree's root is not None, then:
+    #     Push the given tree's root onto the stack.
+    #
+    # NOTE: The stack essentially contains nodes that we know exist in the tree
+    #       but which we have yet to traverse -- jobs that we have identified
+    #       but which we have not yet completed. On each iteration, we will pop
+    #       one job off of the stack and complete it.
+    #
+    # While the stack is not empty, do:
+    #     Pop a current node off of the stack.
+    #     (traverse the current node -- perform whatever action ought to be
+    #      performed on a traversed node, e.g., add it to a queue)
+    #
+    #     If the current node's right is not None, then:
+    #         Push the current node's right onto the stack.
+    #     If the current node's left is not None, then:
+    #         Push the current node's left onto the stack.
+    #
+    # NOTE: Once the stack is empty, there are no more nodes to be traversed.
+    #       There are no more jobs that have yet to be completed.
     pass
 
 
 def levelorder(tree):
+    # NOTE: Siblings will always be encountered before children. With a stack,
+    #       siblings are pushed before children, thus children are popped and
+    #       traversed before siblings. If we instead wish to traverse siblings
+    #       before children, we can replace the stack with a queue.
+    #
+    # Start with an empty queue.
+    # If the given tree's root is not None, then:
+    #     Enqueue the given tree's root to the queue.
+    #
+    # While the queue is not empty, do:
+    #     Dequeue a current node from the queue.
+    #     (traverse the current node -- perform whatever action ought to be
+    #      performed on a traversed node, e.g., add it to a queue)
+    #
+    #     If the current node's left is not None, then:
+    #         Enqueue the current node's left to the queue.
+    #     If the current node's right is not None, then:
+    #         Enqueue the current node's right to the queue.
     pass
